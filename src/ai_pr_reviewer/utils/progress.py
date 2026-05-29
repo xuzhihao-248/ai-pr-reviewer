@@ -1,4 +1,4 @@
-"""Progress display utilities"""
+"""进度显示工具"""
 
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
@@ -7,7 +7,7 @@ console = Console()
 
 
 def create_progress() -> Progress:
-    """Create a rich progress bar"""
+    """创建富文本进度条"""
     return Progress(
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
@@ -18,20 +18,20 @@ def create_progress() -> Progress:
 
 
 def print_success(message: str) -> None:
-    """Print success message"""
+    """打印成功消息"""
     console.print(f"[green]✓[/green] {message}")
 
 
 def print_error(message: str) -> None:
-    """Print error message"""
+    """打印错误消息"""
     console.print(f"[red]✗[/red] {message}")
 
 
 def print_warning(message: str) -> None:
-    """Print warning message"""
+    """打印警告消息"""
     console.print(f"[yellow]⚠[/yellow] {message}")
 
 
 def print_info(message: str) -> None:
-    """Print info message"""
+    """打印信息消息"""
     console.print(f"[blue]ℹ[/blue] {message}")

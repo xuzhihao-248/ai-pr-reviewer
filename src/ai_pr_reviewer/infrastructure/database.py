@@ -1,15 +1,15 @@
-"""Database client interface"""
+"""数据库客户端接口"""
 
 from abc import ABC, abstractmethod
 from datetime import datetime
 
 
 class DatabaseClientInterface(ABC):
-    """Database client interface"""
+    """数据库客户端接口"""
 
     @abstractmethod
     async def initialize(self) -> None:
-        """Initialize database tables"""
+        """初始化数据库表"""
         pass
 
     @abstractmethod
@@ -25,33 +25,33 @@ class DatabaseClientInterface(ABC):
         highlights_count: int,
     ) -> int:
         """
-        Save analysis record
+        保存分析记录
 
         Args:
             pr_url: PR URL
-            repo: Repository name
-            pr_number: PR number
-            pr_title: PR title
-            risk_level: Risk level (low/medium/high)
-            report_markdown: Report content
-            issues_count: Number of issues
-            highlights_count: Number of highlights
+            repo: 仓库名称
+            pr_number: PR 编号
+            pr_title: PR 标题
+            risk_level: 风险等级 (low/medium/high)
+            report_markdown: 报告内容
+            issues_count: 问题数量
+            highlights_count: 亮点数量
 
         Returns:
-            Record ID
+            记录 ID
         """
         pass
 
     @abstractmethod
     async def get_analysis(self, analysis_id: int) -> dict | None:
         """
-        Get analysis record by ID
+        根据 ID 获取分析记录
 
         Args:
-            analysis_id: Analysis record ID
+            analysis_id: 分析记录 ID
 
         Returns:
-            Analysis record or None
+            分析记录或 None
         """
         pass
 
@@ -60,39 +60,39 @@ class DatabaseClientInterface(ABC):
         self, limit: int = 20, offset: int = 0
     ) -> list[dict]:
         """
-        List analysis records
+        列出分析记录
 
         Args:
-            limit: Max records to return
-            offset: Records to skip
+            limit: 返回的最大记录数
+            offset: 跳过的记录数
 
         Returns:
-            List of analysis records
+            分析记录列表
         """
         pass
 
     @abstractmethod
     async def delete_analysis(self, analysis_id: int) -> bool:
         """
-        Delete analysis record
+        删除分析记录
 
         Args:
-            analysis_id: Analysis record ID
+            analysis_id: 分析记录 ID
 
         Returns:
-            True if deleted
+            如果删除成功返回 True
         """
         pass
 
     @abstractmethod
     async def cleanup_old_records(self, days: int = 30) -> int:
         """
-        Cleanup old records
+        清理旧记录
 
         Args:
-            days: Delete records older than this many days
+            days: 删除超过此天数的记录
 
         Returns:
-            Number of deleted records
+            删除的记录数
         """
         pass

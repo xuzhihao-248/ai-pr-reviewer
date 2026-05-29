@@ -1,11 +1,11 @@
-"""Analysis result models"""
+"""分析结果模型"""
 
 from dataclasses import dataclass, field
 from enum import Enum
 
 
 class IssueSeverity(Enum):
-    """Issue severity level"""
+    """问题严重程度"""
 
     HIGH = "high"
     MEDIUM = "medium"
@@ -14,7 +14,7 @@ class IssueSeverity(Enum):
 
 
 class IssueType(Enum):
-    """Issue type"""
+    """问题类型"""
 
     SECURITY = "security"
     LOGIC = "logic"
@@ -24,7 +24,7 @@ class IssueType(Enum):
 
 @dataclass
 class Issue:
-    """Code issue found in analysis"""
+    """分析中发现的代码问题"""
 
     severity: IssueSeverity
     type: IssueType
@@ -36,7 +36,7 @@ class Issue:
 
 @dataclass
 class Highlight:
-    """Code highlight (positive feedback)"""
+    """代码亮点（正向反馈）"""
 
     file_path: str
     line_range: tuple[int, int] | None
@@ -45,7 +45,7 @@ class Highlight:
 
 @dataclass
 class FileAnalysisResult:
-    """Analysis result for a single file"""
+    """单个文件的分析结果"""
 
     file_path: str
     issues: list[Issue] = field(default_factory=list)
@@ -55,7 +55,7 @@ class FileAnalysisResult:
 
 @dataclass
 class AnalysisResult:
-    """Complete analysis result for a PR"""
+    """PR 的完整分析结果"""
 
     pr_url: str
     pr_title: str
@@ -65,6 +65,6 @@ class AnalysisResult:
     overall_summary: str = ""
 
     def calculate_totals(self) -> None:
-        """Calculate total issues and highlights"""
+        """计算问题和亮点总数"""
         self.total_issues = sum(len(f.issues) for f in self.file_results)
         self.total_highlights = sum(len(f.highlights) for f in self.file_results)

@@ -1,10 +1,10 @@
-"""AI client interface"""
+"""AI 客户端接口"""
 
 from abc import ABC, abstractmethod
 
 
 class AIClientInterface(ABC):
-    """AI client interface for code analysis"""
+    """用于代码分析的 AI 客户端接口"""
 
     @abstractmethod
     async def analyze_code(
@@ -14,15 +14,15 @@ class AIClientInterface(ABC):
         context_files: list[str] | None = None,
     ) -> dict:
         """
-        Analyze code using AI
+        使用 AI 分析代码
 
         Args:
-            file_diff: File diff content
-            file_path: File path
-            context_files: Related file contents (optional)
+            file_diff: 文件差异内容
+            file_path: 文件路径
+            context_files: 相关文件内容（可选）
 
         Returns:
-            Dictionary with analysis results:
+            分析结果字典：
             {
                 "issues": [
                     {
@@ -43,7 +43,7 @@ class AIClientInterface(ABC):
             }
 
         Raises:
-            AIAPIError: AI API call failed
-            AnalysisTimeoutError: Analysis timeout
+            AIAPIError: AI API 调用失败
+            AnalysisTimeoutError: 分析超时
         """
         pass

@@ -1,4 +1,4 @@
-"""Main entry point"""
+"""主入口"""
 
 from ai_pr_reviewer.controllers.cli import app
 

@@ -1,1 +1,1 @@
-"""Infrastructure layer - External integrations"""
+"""基础设施层 - 外部集成"""

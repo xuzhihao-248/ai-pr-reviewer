@@ -1,9 +1,9 @@
-"""Web controller (reserved for future implementation)"""
+"""Web 控制器（预留，待未来实现）"""
 
-# TODO: Implement FastAPI web controller
-# This module is reserved for future web UI implementation
+# TODO: 实现 FastAPI Web 控制器
+# 此模块预留用于未来的 Web UI 实现
 
-# Example structure:
+# 示例结构：
 #
 # from fastapi import FastAPI, HTTPException
 # from pydantic import BaseModel
@@ -20,15 +20,15 @@
 #
 # @app.post("/api/analyze", response_model=AnalyzeResponse)
 # async def analyze_pr(request: AnalyzeRequest):
-#     """Analyze a PR"""
+#     """分析 PR"""
 #     pass
 #
 # @app.get("/api/history")
 # async def get_history(limit: int = 20, offset: int = 0):
-#     """Get analysis history"""
+#     """获取分析历史"""
 #     pass
 #
 # @app.get("/api/analysis/{analysis_id}")
 # async def get_analysis(analysis_id: int):
-#     """Get analysis by ID"""
+#     """根据 ID 获取分析"""
 #     pass

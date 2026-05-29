@@ -1,4 +1,4 @@
-"""PR data models"""
+"""PR 数据模型"""
 
 from dataclasses import dataclass
 from datetime import datetime
@@ -6,10 +6,10 @@ from datetime import datetime
 
 @dataclass
 class PRFile:
-    """PR file change"""
+    """PR 文件变更"""
 
     path: str
-    status: str  # added, modified, removed
+    status: str  # added, modified, removed（新增、修改、删除）
     additions: int
     deletions: int
     diff: str
@@ -18,7 +18,7 @@ class PRFile:
 
 @dataclass
 class PRData:
-    """PR data from GitHub"""
+    """来自 GitHub 的 PR 数据"""
 
     url: str
     repo: str  # owner/repo

@@ -1,4 +1,4 @@
-"""Report service interface"""
+"""报告服务接口"""
 
 from abc import ABC, abstractmethod
 
@@ -7,61 +7,61 @@ from ai_pr_reviewer.models.report import Report, RiskLevel
 
 
 class ReportServiceInterface(ABC):
-    """Report service interface"""
+    """报告服务接口"""
 
     @abstractmethod
     def generate_report(self, analysis_result: AnalysisResult) -> Report:
         """
-        Generate complete report
+        生成完整报告
 
         Args:
-            analysis_result: Analysis result
+            analysis_result: 分析结果
 
         Returns:
-            Report object with Markdown content and risk level
+            包含 Markdown 内容和风险等级的 Report 对象
         """
         pass
 
     @abstractmethod
     def calculate_risk_level(self, analysis_result: AnalysisResult) -> RiskLevel:
         """
-        Calculate risk level
+        计算风险等级
 
         Args:
-            analysis_result: Analysis result
+            analysis_result: 分析结果
 
         Returns:
             RiskLevel (low/medium/high)
 
-        Rules:
-            - high: Has security issues OR logic issues >= 3
-            - medium: Has logic issues OR style issues >= 5
-            - low: Otherwise
+        规则:
+            - high: 存在安全问题 或 逻辑问题 >= 3
+            - medium: 存在逻辑问题 或 代码风格问题 >= 5
+            - low: 其他情况
         """
         pass
 
     @abstractmethod
     def format_markdown(self, report: Report) -> str:
         """
-        Format report as Markdown
+        将报告格式化为 Markdown
 
         Args:
-            report: Report object
+            report: Report 对象
 
         Returns:
-            Markdown formatted string
+            Markdown 格式的字符串
         """
         pass
 
     @abstractmethod
     def format_terminal(self, report: Report) -> str:
         """
-        Format report for terminal output (with colors)
+        将报告格式化为终端输出（带颜色）
 
         Args:
-            report: Report object
+            report: Report 对象
 
         Returns:
-            Terminal formatted string
+            终端格式化的字符串
         """
         pass

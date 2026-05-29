@@ -1,8 +1,8 @@
-"""File filtering utilities"""
+"""文件过滤工具"""
 
 from ai_pr_reviewer.models.pr_data import PRFile
 
-# File patterns to exclude from analysis
+# 需要排除的文件模式
 EXCLUDE_PATTERNS = [
     "*.lock",
     "*.min.js",
@@ -24,7 +24,7 @@ EXCLUDE_PATTERNS = [
     "go.sum",
 ]
 
-# Code file extensions to include
+# 需要包含的代码文件扩展名
 CODE_EXTENSIONS = {
     ".py",
     ".js",
@@ -65,17 +65,17 @@ CODE_EXTENSIONS = {
 
 def is_code_file(file: PRFile) -> bool:
     """
-    Check if file is a code file that should be analyzed
+    检查文件是否为需要分析的代码文件
 
     Args:
-        file: PR file object
+        file: PR 文件对象
 
     Returns:
-        True if file should be analyzed
+        如果文件需要分析则返回 True
     """
     path = file.path.lower()
 
-    # Check exclude patterns
+    # 检查排除模式
     for pattern in EXCLUDE_PATTERNS:
         if pattern.startswith("*"):
             if path.endswith(pattern[1:]):
@@ -83,7 +83,7 @@ def is_code_file(file: PRFile) -> bool:
         elif path.endswith(pattern) or path == pattern:
             return False
 
-    # Check code extensions
+    # 检查代码扩展名
     for ext in CODE_EXTENSIONS:
         if path.endswith(ext):
             return True
@@ -93,12 +93,12 @@ def is_code_file(file: PRFile) -> bool:
 
 def filter_code_files(files: list[PRFile]) -> list[PRFile]:
     """
-    Filter PR files to only include code files
+    过滤 PR 文件，只保留代码文件
 
     Args:
-        files: List of PR files
+        files: PR 文件列表
 
     Returns:
-        Filtered list of code files
+        过滤后的代码文件列表
     """
     return [f for f in files if is_code_file(f)]

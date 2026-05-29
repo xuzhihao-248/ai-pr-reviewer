@@ -1,1 +1,1 @@
-"""Controllers layer - CLI and Web endpoints"""
+"""控制器层 - CLI 和 Web 端点"""
